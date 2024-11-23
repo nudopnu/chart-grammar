@@ -43,20 +43,6 @@ function toConfig(result) {
             }
         };
     }
-    if (result.bar) {
-        result.bar.forEach(bar => {
-            const dataset = {
-                label: bar.name,
-                data: bar.dataset,
-                type: 'bar',
-                backgroundColor: getRandomColor(),
-            };
-            if (bar.name in stackMap) {
-                dataset.stack = stackMap[bar.name];
-            }
-            config.data.datasets.push(dataset);
-        });
-    }
     if (result.line) {
         result.line.forEach(line => {
             const dataset = {
@@ -68,6 +54,20 @@ function toConfig(result) {
             };
             if (line.name in stackMap) {
                 dataset.stack = stackMap[line.name];
+            }
+            config.data.datasets.push(dataset);
+        });
+    }
+    if (result.bar) {
+        result.bar.forEach(bar => {
+            const dataset = {
+                label: bar.name,
+                data: bar.dataset,
+                type: 'bar',
+                backgroundColor: getRandomColor(),
+            };
+            if (bar.name in stackMap) {
+                dataset.stack = stackMap[bar.name];
             }
             config.data.datasets.push(dataset);
         });
