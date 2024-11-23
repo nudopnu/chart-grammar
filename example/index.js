@@ -50,7 +50,8 @@ function toConfig(result) {
                 data: line.dataset,
                 type: 'line',
                 borderColor: getRandomColor(),
-                borderWidth: 3,
+                borderWidth: 2,
+                tension: 0.4,
             };
             if (line.name in stackMap) {
                 dataset.stack = stackMap[line.name];
