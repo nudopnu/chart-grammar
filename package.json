@@ -1,0 +1,19 @@
+{
+  "name": "chart-grammar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "nearleyc grammar.ne -o out/grammar.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nearley": "^2.20.1"
+  }
+}

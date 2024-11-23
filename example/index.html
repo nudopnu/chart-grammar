@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/nearley@2.20.1/lib/nearley.min.js"></script>
+    <script src="https://unpkg.com/moo@0.5.2/moo.js"></script>
+    <script src="../out/grammar.js"></script>
+    <title>chart-parser</title>
+</head>
+
+<body style="max-width: 600px; margin: auto;">
+    <textarea id="chart-parser" style="height: 400px; width: 100%;"></textarea>
+    <script>
+        const textArea = document.getElementById("chart-parser");
+        textArea.addEventListener("input", (event) => {
+            const parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar));
+            const result = parser.feed(textArea.value).results[0];
+            console.log(result);
+        });
+        textArea.value = `title "Sales Revenue"
+labels [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+stack "Stack 0" ["Dataset 1", "Dataset 2"]
+bar "Dataset 1" [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+bar "Dataset 2" [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+bar "Dataset 3" [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+line "Dataset 4" [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]`;
+    </script>
+</body>
+
+</html>
